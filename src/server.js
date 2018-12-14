@@ -5,6 +5,7 @@ app.listen(4000, () => {
 });
 app.set('json spaces', 2)
 app.post("/api/alexa", (req, res, next) => {
+    console.log(req)
     res.type('application/json'); 
     res.json(
 {
