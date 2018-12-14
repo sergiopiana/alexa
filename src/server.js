@@ -5,23 +5,32 @@ app.listen(4000, () => {
 });
 app.set('json spaces', 2)
 app.get("/api/alexa", (req, res, next) => {
-    res.setHeader('Content-Type', 'application/xml');
     res.type('application/json'); 
-    res.json({
-        "body": {
-            "version": "1.0",
-            "response": {
-                "outputSpeech": {
-                    "type": "PlainText",
-                    "text": "Prueba de texto"
-                },
-                "reprompt": {
-                    "outputSpeech": {
-                        "type": "PlainText",
-                        "text": "Adios"
-                    }
-                },
-            }
-        }
-    });
+    res.json(
+{
+  "version": "string",
+  "sessionAttributes": {
+    "key": "value"
+  },
+  "response": {
+    "outputSpeech": {
+      "type": "PlainText",
+      "text": "hola, ya va la enfermera en camino",
+      "ssml": "<speak>hola, ya va la enfermera en camino</speak>",
+      "playBehavior": "REPLACE_ENQUEUED"      
+    },
+    
+    "reprompt": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "Necesitas algo mas?",
+        "ssml": "<speak>Necesitas algo mas?</speak>",
+        "playBehavior": "REPLACE_ENQUEUED"             
+      }
+    },
+
+    "shouldEndSession": true
+  }
+}    
+    );
    });
